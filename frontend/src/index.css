@@ -895,3 +895,78 @@ button, input, select, textarea {
     display: none;
   }
 }
+
+/* Demo Accounts section on Login page */
+.demo-accounts-section {
+  margin-top: 32px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 24px;
+}
+
+.demo-accounts-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.demo-accounts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.demo-account-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px 16px;
+  transition: all 0.2s ease;
+}
+
+.demo-account-item:hover {
+  border-color: var(--primary);
+  background-color: rgba(99, 102, 241, 0.03);
+}
+
+.demo-account-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.demo-account-role {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.demo-account-email {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono, monospace);
+}
+
+.demo-account-use-btn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.demo-account-use-btn:hover {
+  background-color: rgba(99, 102, 241, 0.1);
+  transform: translateX(2px);
+}

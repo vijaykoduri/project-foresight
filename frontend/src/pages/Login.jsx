@@ -30,6 +30,12 @@ export default function Login() {
     }
   };
 
+  const handleUseDemo = (demoEmail, demoPassword) => {
+    setEmail(demoEmail);
+    setPassword(demoPassword);
+    addNotification('Autofilled demo credentials!', 'success');
+  };
+
   return (
     <div className="auth-page">
       <div className="auth-card">
@@ -73,6 +79,38 @@ export default function Login() {
         </form>
         <div className="auth-footer">
           Don't have an account? <Link to="/register">Register here</Link>
+        </div>
+        
+        <div className="demo-accounts-section">
+          <h3 className="demo-accounts-title">DEMO ACCOUNTS</h3>
+          <div className="demo-accounts-list">
+            <div className="demo-account-item">
+              <div className="demo-account-info">
+                <span className="demo-account-role">Administrator</span>
+                <span className="demo-account-email">admin@foresight.local</span>
+              </div>
+              <button
+                type="button"
+                className="demo-account-use-btn"
+                onClick={() => handleUseDemo('admin@foresight.local', 'Admin@12345')}
+              >
+                Use →
+              </button>
+            </div>
+            <div className="demo-account-item">
+              <div className="demo-account-info">
+                <span className="demo-account-role">Manager</span>
+                <span className="demo-account-email">manager@foresight.local</span>
+              </div>
+              <button
+                type="button"
+                className="demo-account-use-btn"
+                onClick={() => handleUseDemo('manager@foresight.local', 'Manager@12345')}
+              >
+                Use →
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
