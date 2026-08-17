@@ -6,11 +6,11 @@ class Settings(BaseSettings):
     app_name: str = "FORESIGHT"
     environment: str = "development"
     log_level: str = "INFO"
-    database_url: str = "postgresql://foresight:foresight@localhost:5432/foresight"
+    database_url: str = "sqlite:///./foresight.db"
     jwt_secret: str = "change-this-to-a-secure-random-string-in-production"
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 1440
-    cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
+    cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173,https://foresight-frontend-526w.onrender.com"
 
     @property
     def cors_origin_list(self) -> list[str]:
