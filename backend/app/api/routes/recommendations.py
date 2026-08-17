@@ -52,7 +52,7 @@ def list_recommendations(
 @router.post("/generate")
 def generate_recommendations(
     db: Session = Depends(get_db),
-    _: User = Depends(require_roles("admin", "manager")),
+    _: User = Depends(require_roles("admin", "manager", "user")),
 ):
     recs = generate_all_recommendations(db)
     return {"message": f"Generated {len(recs)} recommendations", "count": len(recs)}
@@ -63,7 +63,7 @@ def update_recommendation(
     rec_id: int,
     data: RecommendationUpdateRequest,
     db: Session = Depends(get_db),
-    _: User = Depends(require_roles("admin", "manager")),
+    _: User = Depends(require_roles("admin", "manager", "user")),
 ):
     valid_statuses = {"pending", "acknowledged", "ordered", "dismissed"}
     if data.status not in valid_statuses:

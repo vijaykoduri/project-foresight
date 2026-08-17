@@ -31,8 +31,11 @@ def get_current_user(
 def require_roles(*roles: str):
     def role_checker(current_user: User = Depends(get_current_user)) -> User:
         user_role = getattr(current_user, "jwt_role", None) or current_user.role.name
+        print(f"DEBUG: require_roles checks user_role={user_role!r} against allowed roles={roles!r}", flush=True)
         if user_role not in roles:
+            print(f"DEBUG: Access DENIED for user_role={user_role!r}", flush=True)
             raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Insufficient permissions")
+        print(f"DEBUG: Access GRANTED for user_role={user_role!r}", flush=True)
         return current_user
 
     return role_checker

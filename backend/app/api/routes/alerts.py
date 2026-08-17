@@ -75,7 +75,7 @@ def list_alerts(
 @router.post("/generate")
 def trigger_alert_generation(
     db: Session = Depends(get_db),
-    _: User = Depends(require_roles("admin", "manager")),
+    _: User = Depends(require_roles("admin", "manager", "user")),
 ):
     alerts = generate_alerts(db)
     return {"message": f"Generated {len(alerts)} new alerts", "count": len(alerts)}

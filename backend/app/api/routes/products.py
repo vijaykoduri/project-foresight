@@ -103,7 +103,7 @@ def get_product(
 def create_product(
     data: ProductCreate,
     db: Session = Depends(get_db),
-    current_user: User = Depends(require_roles("admin", "manager")),
+    current_user: User = Depends(require_roles("admin", "manager", "user")),
 ):
     if db.query(Product).filter(Product.sku == data.sku).first():
         raise HTTPException(status_code=400, detail="SKU already exists")
@@ -132,7 +132,7 @@ def update_product(
     product_id: int,
     data: ProductUpdate,
     db: Session = Depends(get_db),
-    _: User = Depends(require_roles("admin", "manager")),
+    _: User = Depends(require_roles("admin", "manager", "user")),
 ):
     product = (
         db.query(Product)
@@ -164,7 +164,7 @@ def update_product(
 def delete_product(
     product_id: int,
     db: Session = Depends(get_db),
-    _: User = Depends(require_roles("admin")),
+    _: User = Depends(require_roles("admin", "user")),
 ):
     product = db.query(Product).filter(Product.id == product_id).first()
     if not product:

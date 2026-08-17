@@ -114,7 +114,7 @@ def get_product_inventory(
 def adjust_inventory(
     data: InventoryAdjustRequest,
     db: Session = Depends(get_db),
-    current_user: User = Depends(require_roles("admin", "manager")),
+    current_user: User = Depends(require_roles("admin", "manager", "user")),
 ):
     product = db.query(Product).filter(Product.id == data.product_id).first()
     if not product:

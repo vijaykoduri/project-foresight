@@ -48,7 +48,7 @@ def _forecast_response(forecast: DemandForecast, db: Session) -> ForecastRespons
 def generate_product_forecast(
     data: ForecastGenerateRequest,
     db: Session = Depends(get_db),
-    _: User = Depends(require_roles("admin", "manager")),
+    _: User = Depends(require_roles("admin", "manager", "user")),
 ):
     product = db.query(Product).filter(Product.id == data.product_id).first()
     if not product:
